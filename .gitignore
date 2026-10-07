@@ -4,6 +4,12 @@ target/
 ### Logs ###
 *.log
 
+### Environment / secrets ###
+# Real credentials and JWT secrets must never be committed.
+.env
+.env.*
+!.env.example
+
 ### Freebuff / agent tooling ###
 .freebuff/
 .mvn/wrapper/maven-wrapper.jar

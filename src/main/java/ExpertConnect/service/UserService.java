@@ -7,6 +7,7 @@ import ExpertConnect.entity.User;
 import ExpertConnect.exception.EmailAlreadyExistsException;
 import ExpertConnect.exception.ResourceNotFoundException;
 import ExpertConnect.repository.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,9 +16,11 @@ import java.util.List;
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public UserResponse register(RegisterRequest request) {
@@ -30,8 +33,11 @@ public class UserService {
         User user = new User();
         user.setName(request.name().trim());
         user.setEmail(email);
-        user.setPassword(request.password());
-        user.setRole(request.role() == null ? Role.USER : request.role());
+        // Passwords are always stored as a BCrypt hash (Part 4).
+        user.setPassword(passwordEncoder.encode(request.password()));
+        // Public registration never grants a privileged role: everyone starts
+        // as USER, and only ADMIN verification can promote to EXPERT.
+        user.setRole(Role.USER);
 
         User saved = userRepository.save(user);
         return toResponse(saved);
