@@ -1,0 +1,76 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v4.1.1)
+
+2026-10-07T10:39:54.782+05:30  INFO 22608 --- [expertconnect] [           main] ExpertConnect.ExpertconnectApplication   : Starting ExpertconnectApplication v0.0.1-SNAPSHOT using Java 26.0.1 with PID 22608 (D:\Code\ExpertConnect\expertconnect\target\expertconnect-0.0.1-SNAPSHOT.jar started by Sriram in D:\Code\ExpertConnect\expertconnect)
+2026-10-07T10:39:54.784+05:30  INFO 22608 --- [expertconnect] [           main] ExpertConnect.ExpertconnectApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-10-07T10:39:55.271+05:30  INFO 22608 --- [expertconnect] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-07T10:39:55.330+05:30  INFO 22608 --- [expertconnect] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 2 JPA repository interfaces.
+2026-10-07T10:39:55.757+05:30  INFO 22608 --- [expertconnect] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-10-07T10:39:55.790+05:30  INFO 22608 --- [expertconnect] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-07T10:39:55.790+05:30  INFO 22608 --- [expertconnect] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-07T10:39:55.832+05:30  INFO 22608 --- [expertconnect] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1011 ms
+2026-10-07T10:39:56.002+05:30  INFO 22608 --- [expertconnect] [           main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-07T10:39:56.047+05:30  INFO 22608 --- [expertconnect] [           main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.5.Final
+2026-10-07T10:39:56.462+05:30  INFO 22608 --- [expertconnect] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-07T10:39:56.510+05:30  INFO 22608 --- [expertconnect] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-07T10:39:56.631+05:30  INFO 22608 --- [expertconnect] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@20faaf77
+2026-10-07T10:39:56.633+05:30  INFO 22608 --- [expertconnect] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-07T10:39:56.687+05:30  INFO 22608 --- [expertconnect] [           main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/expertconnect?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 8.0.46
+	Default catalog/schema: expertconnect/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-07T10:39:57.294+05:30  INFO 22608 --- [expertconnect] [           main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-07T10:39:57.367+05:30  INFO 22608 --- [expertconnect] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-07T10:39:57.416+05:30  INFO 22608 --- [expertconnect] [           main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-07T10:39:57.772+05:30  INFO 22608 --- [expertconnect] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-10-07T10:39:57.781+05:30  INFO 22608 --- [expertconnect] [           main] ExpertConnect.ExpertconnectApplication   : Started ExpertconnectApplication in 3.343 seconds (process running for 3.681)
+2026-10-07T10:39:58.187+05:30  INFO 22608 --- [expertconnect] [nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-07T10:39:58.204+05:30  INFO 22608 --- [expertconnect] [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-07T10:39:58.206+05:30  INFO 22608 --- [expertconnect] [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+Hibernate: select u1_0.id from users u1_0 where u1_0.email=? limit ?
+Hibernate: insert into users (created_at,email,name,password,role) values (?,?,?,?,?)
+Hibernate: select u1_0.id from users u1_0 where u1_0.email=? limit ?
+Hibernate: insert into users (created_at,email,name,password,role) values (?,?,?,?,?)
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.name,u1_0.password,u1_0.role from users u1_0 where u1_0.id=?
+Hibernate: insert into questions (asker_id,category,created_at,description,title,updated_at) values (?,?,?,?,?,?)
+Hibernate: select q1_0.id,q1_0.asker_id,q1_0.category,q1_0.created_at,q1_0.description,q1_0.title,q1_0.updated_at from questions q1_0
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.name,u1_0.password,u1_0.role from users u1_0 where u1_0.id=?
+Hibernate: select q1_0.id,q1_0.asker_id,a1_0.id,a1_0.created_at,a1_0.email,a1_0.name,a1_0.password,a1_0.role,q1_0.category,q1_0.created_at,q1_0.description,q1_0.title,q1_0.updated_at from questions q1_0 join users a1_0 on a1_0.id=q1_0.asker_id where q1_0.id=?
+Hibernate: select q1_0.id,q1_0.asker_id,q1_0.category,q1_0.created_at,q1_0.description,q1_0.title,q1_0.updated_at from questions q1_0 where q1_0.category=?
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.name,u1_0.password,u1_0.role from users u1_0 where u1_0.id=?
+Hibernate: select q1_0.id,q1_0.asker_id,q1_0.category,q1_0.created_at,q1_0.description,q1_0.title,q1_0.updated_at from questions q1_0 where q1_0.asker_id=?
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.name,u1_0.password,u1_0.role from users u1_0 where u1_0.id=?
+Hibernate: select q1_0.id,q1_0.asker_id,q1_0.category,q1_0.created_at,q1_0.description,q1_0.title,q1_0.updated_at from questions q1_0 where q1_0.asker_id=?
+Hibernate: select q1_0.id,q1_0.asker_id,a1_0.id,a1_0.created_at,a1_0.email,a1_0.name,a1_0.password,a1_0.role,q1_0.category,q1_0.created_at,q1_0.description,q1_0.title,q1_0.updated_at from questions q1_0 join users a1_0 on a1_0.id=q1_0.asker_id where q1_0.id=?
+Hibernate: select q1_0.id,q1_0.asker_id,a1_0.id,a1_0.created_at,a1_0.email,a1_0.name,a1_0.password,a1_0.role,q1_0.category,q1_0.created_at,q1_0.description,q1_0.title,q1_0.updated_at from questions q1_0 join users a1_0 on a1_0.id=q1_0.asker_id where q1_0.id=?
+Hibernate: update questions set asker_id=?,category=?,description=?,title=?,updated_at=? where id=?
+Hibernate: select q1_0.id,q1_0.asker_id,a1_0.id,a1_0.created_at,a1_0.email,a1_0.name,a1_0.password,a1_0.role,q1_0.category,q1_0.created_at,q1_0.description,q1_0.title,q1_0.updated_at from questions q1_0 join users a1_0 on a1_0.id=q1_0.asker_id where q1_0.id=?
+Hibernate: select q1_0.id,q1_0.asker_id,a1_0.id,a1_0.created_at,a1_0.email,a1_0.name,a1_0.password,a1_0.role,q1_0.category,q1_0.created_at,q1_0.description,q1_0.title,q1_0.updated_at from questions q1_0 join users a1_0 on a1_0.id=q1_0.asker_id where q1_0.id=?
+Hibernate: select q1_0.id,q1_0.asker_id,a1_0.id,a1_0.created_at,a1_0.email,a1_0.name,a1_0.password,a1_0.role,q1_0.category,q1_0.created_at,q1_0.description,q1_0.title,q1_0.updated_at from questions q1_0 join users a1_0 on a1_0.id=q1_0.asker_id where q1_0.id=?
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.name,u1_0.password,u1_0.role from users u1_0 where u1_0.id=?
+Hibernate: select q1_0.id,q1_0.asker_id,a1_0.id,a1_0.created_at,a1_0.email,a1_0.name,a1_0.password,a1_0.role,q1_0.category,q1_0.created_at,q1_0.description,q1_0.title,q1_0.updated_at from questions q1_0 join users a1_0 on a1_0.id=q1_0.asker_id where q1_0.id=?
+Hibernate: select q1_0.id,q1_0.asker_id,a1_0.id,a1_0.created_at,a1_0.email,a1_0.name,a1_0.password,a1_0.role,q1_0.category,q1_0.created_at,q1_0.description,q1_0.title,q1_0.updated_at from questions q1_0 join users a1_0 on a1_0.id=q1_0.asker_id where q1_0.id=?
+Hibernate: delete from questions where id=?
+Hibernate: select q1_0.id,q1_0.asker_id,a1_0.id,a1_0.created_at,a1_0.email,a1_0.name,a1_0.password,a1_0.role,q1_0.category,q1_0.created_at,q1_0.description,q1_0.title,q1_0.updated_at from questions q1_0 join users a1_0 on a1_0.id=q1_0.asker_id where q1_0.id=?
+Hibernate: select q1_0.id,q1_0.asker_id,a1_0.id,a1_0.created_at,a1_0.email,a1_0.name,a1_0.password,a1_0.role,q1_0.category,q1_0.created_at,q1_0.description,q1_0.title,q1_0.updated_at from questions q1_0 join users a1_0 on a1_0.id=q1_0.asker_id where q1_0.id=?
+Hibernate: select q1_0.id,q1_0.asker_id,a1_0.id,a1_0.created_at,a1_0.email,a1_0.name,a1_0.password,a1_0.role,q1_0.category,q1_0.created_at,q1_0.description,q1_0.title,q1_0.updated_at from questions q1_0 join users a1_0 on a1_0.id=q1_0.asker_id where q1_0.id=?
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.name,u1_0.password,u1_0.role from users u1_0
+Hibernate: select u1_0.id from users u1_0 where u1_0.email=? limit ?
+Hibernate: select u1_0.id from users u1_0 where u1_0.email=? limit ?
+Hibernate: select u1_0.id,u1_0.created_at,u1_0.email,u1_0.name,u1_0.password,u1_0.role from users u1_0 where u1_0.id=?
+Hibernate: select q1_0.id,q1_0.asker_id,q1_0.category,q1_0.created_at,q1_0.description,q1_0.title,q1_0.updated_at from questions q1_0
