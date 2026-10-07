@@ -301,3 +301,37 @@ confirmed to persist after stopping and restarting the application.
 - **React frontend**: a separate app will consume this API. CORS is already
   configured for `http://localhost:3000` and `http://localhost:5173`.
 - **AI answer assistant**: no AI code exists yet.
+
+## React frontend (Part 5)
+
+The Vite + React application is in `frontend/`; it uses React Router and the
+existing Spring REST API. Pages include the landing page, login, registration,
+question feed and details, ask/edit, the user's questions, profile, expert
+application status, and the admin application review. Reusable components cover
+navigation, protected routes, question cards, answers, loading, empty, and error
+states. The layout adapts to mobile widths.
+
+Run the API and MySQL as described above, then in a second terminal:
+
+```bash
+cd D:/Code/ExpertConnect/expertconnect/frontend
+npm install
+npm run dev
+```
+
+Vite serves the app at `http://localhost:5173`. Set `VITE_API_BASE_URL` in
+`frontend/.env` to override the default `http://localhost:8080`. Authentication
+uses the JWT returned by `/api/auth/login`, stores it in browser local storage,
+and sends it as a Bearer token through the centralized API client. The client
+clears invalid tokens on 401 responses. Public registration submits name, email,
+and password only; it does not offer role selection.
+
+The application status page uses the authenticated `GET /api/experts/me`
+endpoint, which returns only applications belonging to the caller. This is the
+small backend addition required to display an applicant's PENDING, VERIFIED, or
+REJECTED status safely. Admin review continues to use the existing admin-only
+expert endpoints.
+
+Frontend production build: `npm run build`. Maven checks: `mvn clean test` and
+`mvn clean package` from the project root. AI answer assistance remains a future
+feature and is **not implemented**.

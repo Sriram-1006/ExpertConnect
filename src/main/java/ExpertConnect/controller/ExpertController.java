@@ -37,6 +37,12 @@ public class ExpertController {
         return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
+    @GetMapping("/me")
+    public List<ExpertApplicationResponse> getMyApplications(
+            @AuthenticationPrincipal AuthUser authUser) {
+        return expertService.findByUser(authUser.id());
+    }
+
     @GetMapping
     public List<ExpertApplicationResponse> getAll() {
         return expertService.findAll();

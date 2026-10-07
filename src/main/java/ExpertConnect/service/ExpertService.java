@@ -61,6 +61,13 @@ public class ExpertService {
                 .toList();
     }
 
+    @Transactional(readOnly = true)
+    public List<ExpertApplicationResponse> findByUser(Long userId) {
+        return expertApplicationRepository.findByUserId(userId).stream()
+                .map(this::toResponse)
+                .toList();
+    }
+
     @Transactional
     public ExpertApplicationResponse approve(Long id, Long requestingUserId) {
         requireAdmin(requestingUserId);

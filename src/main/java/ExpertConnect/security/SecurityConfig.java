@@ -54,6 +54,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/api/questions/*/answers").permitAll()
                         // Any authenticated user may apply to become an expert.
                         .requestMatchers(HttpMethod.POST, "/api/experts/apply").authenticated()
+                        .requestMatchers(HttpMethod.GET, "/api/experts/me").authenticated()
                         // Admin-only: review/approve/reject and list applications.
                         .requestMatchers("/api/experts/**").hasRole("ADMIN")
                         // Any authenticated user can read their own profile.
