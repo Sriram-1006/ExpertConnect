@@ -5,7 +5,8 @@ them. Experts are not self-declared: a user applies, an ADMIN reviews the
 application, and only a verified expert can post answers. Authentication uses
 JWT, passwords are hashed with BCrypt.
 
-The frontend (React) and the AI answer-assistant are **planned**, not built.
+The repository contains a Spring Boot backend in `backend/` and a React frontend
+in `frontend/`. AI answer assistance is not implemented.
 
 ---
 
@@ -17,7 +18,7 @@ The frontend (React) and the AI answer-assistant are **planned**, not built.
 | Part 2 — Questions + ownership | ✅ IMPLEMENTED |
 | Part 3 — Expert applications + Answers | ✅ IMPLEMENTED |
 | Part 4 — Spring Security + JWT | ✅ IMPLEMENTED |
-| React frontend | ⏳ PLANNED |
+| React frontend | IMPLEMENTED (Part 5) |
 | AI answer assistant | ⏳ PLANNED |
 
 ---
@@ -72,7 +73,7 @@ Security (JWT filter, SecurityConfig) wraps every request
 ## Project structure
 
 ```
-src/main/java/ExpertConnect/
+backend/src/main/java/ExpertConnect/
 ├── ExpertconnectApplication.java
 ├── config/         AdminInitializer (bootstrap ADMIN)
 ├── controller/     Auth, User, Question, Expert, Answer, Hello
@@ -83,9 +84,12 @@ src/main/java/ExpertConnect/
 ├── security/       SecurityConfig, JwtService, JwtAuthFilter, AuthUser
 └── service/        UserService, AuthService, QuestionService,
                     ExpertService, AnswerService
-src/main/resources/application.properties
-src/test/java/ExpertConnect/ExpertconnectApplicationTests.java
+backend/src/main/resources/application.properties
+backend/src/test/java/ExpertConnect/ExpertconnectApplicationTests.java
 ```
+
+The Maven wrapper and `pom.xml` are also in `backend/`. The Vite application is
+independent in `frontend/`; the root `.gitignore` covers both projects.
 
 ---
 
@@ -183,6 +187,7 @@ Notes:
 | PUT | `/api/questions/{id}` | owner |
 | DELETE | `/api/questions/{id}` | owner |
 | POST | `/api/experts/apply` | authenticated |
+| GET | `/api/experts/me` | authenticated (caller's applications) |
 | GET | `/api/experts` | ADMIN |
 | GET | `/api/experts/{id}` | ADMIN |
 | GET | `/api/experts/status/{status}` | ADMIN |
@@ -227,7 +232,8 @@ curl -X POST http://localhost:8080/api/questions -H "Authorization: Bearer $TOKE
 | `EXPERTCONNECT_ADMIN_EMAIL` | bootstrap admin email | `admin@expertconnect.local` |
 | `EXPERTCONNECT_ADMIN_PASSWORD` | bootstrap admin password | `admin12345` |
 
-See `.env.example` for a copy-paste template. **Never commit real values.**
+See `backend/.env.example` for the backend environment template. **Never commit
+real values.**
 
 > ⚠️ The JWT secret fallback and the default admin password are for local
 > development only. Always override them.
@@ -251,7 +257,7 @@ Prerequisites: JDK 21+, Maven, MySQL 8.
    ```
 3. Run:
    ```bash
-   cd D:/Code/ExpertConnect/expertconnect
+   cd D:/Code/ExpertConnect/expertconnect/backend
    ./mvnw spring-boot:run        # or: mvn spring-boot:run
    ```
    The API starts on `http://localhost:8080`. Tables are created automatically
@@ -264,7 +270,7 @@ Prerequisites: JDK 21+, Maven, MySQL 8.
 Build and run the test lifecycle (from the Maven project root):
 
 ```bash
-cd D:/Code/ExpertConnect/expertconnect
+cd D:/Code/ExpertConnect/expertconnect/backend
 EXPERTCONNECT_DB_PASSWORD=your_mysql_password mvn clean package
 ```
 
@@ -298,8 +304,6 @@ confirmed to persist after stopping and restarting the application.
 
 ## Future (PLANNED — not implemented)
 
-- **React frontend**: a separate app will consume this API. CORS is already
-  configured for `http://localhost:3000` and `http://localhost:5173`.
 - **AI answer assistant**: no AI code exists yet.
 
 ## React frontend (Part 5)
@@ -333,5 +337,5 @@ REJECTED status safely. Admin review continues to use the existing admin-only
 expert endpoints.
 
 Frontend production build: `npm run build`. Maven checks: `mvn clean test` and
-`mvn clean package` from the project root. AI answer assistance remains a future
+`mvn clean package` from `backend/`. AI answer assistance remains a future
 feature and is **not implemented**.
